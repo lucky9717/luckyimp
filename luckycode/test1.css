@@ -1,0 +1,31 @@
+
+.callnow {
+    padding-left: 7px !important;
+    padding-top: 0;
+    line-height: 40px;
+    background-position: center left;
+    margin: 10px 0;
+    position: fixed;
+    top: 99px;
+    right: 269px;
+    z-index: 999;
+    float: right;
+    right: 0px;
+    background: #fff;
+}
+
+
+
+
+.callnow {    padding-left: 45px !important;
+    padding-top: 0;
+    line-height: 40px;
+    background-position: center left;
+    margin: 10px 0;
+}
+
+ @media(min-width:480px){
+    #u_content_text_2{
+        font-size: 12px;
+    }
+ }
