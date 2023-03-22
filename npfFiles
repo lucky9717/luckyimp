@@ -1,0 +1,757 @@
+/* var course = [
+    'UG',
+    'PG',
+    'Diploma',
+    'PHD',
+]
+
+for (var i = 0; i < course.length; i++) {
+    $('<option/>', {
+         value: course[i],
+        html: course[i]
+    }).appendTo('#select-course select'); //appends to select if parent div has id dropdown
+} */
+
+
+/*to show the specialization on the basis of courses.*/
+document.querySelectorAll('.CardBoard.buttonCard').length > 1 ? document
+    .querySelectorAll('.CardBoard.buttonCard')[0].remove() : null;
+if ($('#drop-select').val() !== "") {
+    window.localSelected = function (a) {
+        $('.courseEligbility').html('');
+        switch (a.value) {
+            case 'UG':
+                var ISBR_RC = ['Select Course', 'B. Sc Medical Biotechnology', 'B.A (Hons) Sociology', 'B.Sc (Hons) Computer Science (System and Network Administration)', 'B.Sc (Hons) Computer Science (Cyber Security)', 'B.Sc (Hons) Computer Science (Game Design and Development)', 'B.Sc (Hons) Computer Science (Data Science)', 'B.Sc (Hons) Computer Science (Cloud Computing)', 'B.Tech in Computer Science and Engineering (Cyber Security and Digital Forensic)', 'B.Tech in Computer Science and Engineering (Full Stack Development)', 'B.Tech in Civil Engineering (Smart City)',
+                    'Bachelor of Design (Advertising, Graphic and Web Design)', 'B.Com (Hons.) Financial Markets', 'B.Sc. (General) Mathematics and Data Science', 'B.Sc. (General) PCM ( Physics Chemistry and Maths)', 'B.Sc. (General) ZBC (Zoology, Botany, Chemistry)', 'B.A (Hons) Applied Psychology', 'B.A (Hons) Economics', 'B.A (Hons) English', 'B.A (Hons) Political Science', 'B.A (Hons) Sociology', 'B.Com. (Hons)', 'B.Com. (Hons) International Accounting and Finance', 'B.Des Fashion Design (In Association with T-Series)', 'B.Des Fashion Design', 'B.Sc (Hons) Agriculture', 'B.Sc (Hons) Biomedical Science', 'B.Sc (Hons) Chemistry', 'B.Sc (Hons) Computer Science', 'B.Sc (Hons) Forensic Sciences', 'B.Sc (Hons) Mathematics', 'B.Sc (Hons) Microbiology', 'B.Sc (Hons) Physics', 'B.Sc (Hons) Zoology', 'B.Sc Cardiovascular Technology', 'B.Sc Fashion Design', 'B.Sc Hotel Management', 'B.Sc Medical Lab Technology', 'B.Sc Nursing', 'B.Sc. Medical Biotechnology', 'B.Tech in Artificial Intelligence and Data Science', 'B.Tech in Civil Engineering', 'B.Tech in Computer Science and Business Systems', 'B.Tech in Computer Science and Engineering', 'B.Tech in Computer Science and Engineering (Artificial Intelligence and Machine Learning)', 'B.Tech in Computer Science and Engineering (Cloud Computing and Virtualization)', 'B.Tech in Computer Science and Engineering (Cyber Security)', 'B.Tech in Computer Science and Engineering (Internet of Things and Cyber Security Including Block Chain Technology)', 'B.Tech in Electrical Engineering', 'B.Tech in Electronics and Communication Engineering', 'B.Tech in Mechanical Engineering', 'BA Journalism and Mass Communication', 'Bachelor in Hotel Management', 'Bachelor of Law (LLB) (Hons.)', 'Bachelor of Optometry', 'Bachelor of Pharmacy', 'Bachelor of Physiotherapy', 'BBA', 'BBA Aviation Management', 'BBA Business Analytics', 'BBA Financial Investment Analysis', 'BBA Logistics and Supply Chain Management', 'BBA Marketing and Automobile Management', 'BCA', 'Integrated MCA (BCA with MCA)', 'Integrated BA-LLB Honours', 'Integrated BBA-LLB Honours', 'Integrated BCA with MCA', 'Integrated MBA (BBA with MBA)', 'B.Sc. Clinical Research', 'B.Sc. (Hons) Built Environment', 'B.Sc. - Food Science And Dietetics', 'Bachelor of Design (Interior Design)', 'Bachelor of Design (Product Design)', 'B.Tech in Agriculture Engineering', 'B.Tech in Civil Engineering (Smart Cities)', 'B.Tech in Computer Science & Engineering (Augmented Reality & Virtual Reality (AR & VR))', 'B.Tech in Computer Science & Engineering (Business Analytics)', 'B.Tech in Computer Science & Engineering (Business Analytics and Optimization)', 'B.Tech in Computer Science & Engineering (Computer Network & Cyber Security)', 'B.Tech in Computer Science & Engineering (Cyber Security & Forensic)', 'B.Tech in Computer Science & Engineering (Data Analytics)', 'B.Tech Computer Science and Engineering (Artificial Intelligence)', 'B.Tech Computer Science and Engineering (Data Science)', 'B.Tech In Artificial Intelligence & Machine Learning', 'B.Sc.- Programming & Data Science', 'BCA with Industry Oriented Specialization in Artificial Intelligence & Machine Learning (AIML)', 'BCA with Industry Oriented Specialization in Big Data', 'BCA with Industry Oriented Specialization in Business Analytics', 'BCA with Industry Oriented Specialization in Cloud Computing and Virtulization (CCV)', 'BCA with Industry Oriented Specialization in Computer Networks and Cyber Secutity (CNCS)', 'BCA with Industry Oriented Specialization in Data Analytics', 'BCA with Industry Oriented Specialization in Internet of Things (IoT) and Blockchain', 'B.Tech in Electrical Engineering (Electric Vehicle)', 'B.Tech. in Electronics and Communication Engineering(Bio-Medical Engineering)', 'B.Tech in Electronics & Communication Engineering (Artificial Intelligence & Machine Learning)', 'B.Tech in Electronics & Communication Engineering (Embedded Systems)', 'B.Tech in Electronics & Communication Engineering (Internet of Things)', 'B.Tech in Mechanical Engineering (Pipeline Engineering)', 'B.Tech in Mechanical Engineering (Energy Engineering)', 'B.Tech in Mechanical Engineering (Industry 4.0)', 'B.Tech in Mechanical Engineering (Mechatronics)', 'B.Tech in Mechanical Engineering (Robotics & Automation)', 'B.Tech in Mechanical Engineering (Smart Manufacturing)', 'B.Tech in Automobile Engineering (E-Vehicles & Autonomous Vehicles)', 'BBA (Tourism and Travel)','B.Sc Healthcare and Clinical Research', 'B.Tech in Electrical and Electronics Engineering','B.Sc (Hons) Biochemistry', 'B.Sc (Hons) Biological Science', 'B.Sc Computer Science (Cyber Security)', 'B.Sc Computer Science (Data Science)', 'B.Sc Computer Science (Cloud Computing)', 'BCA with Industry Oriented Specialization in Game Design and Development', 'BCA with Industry Oriented Specialization in Multimedia and Animation', 'B.Sc Healthcare & Hospital Management', 'B.Sc Food Science And Dietetics', 'B.Sc Clinical Nutrition & Dietetics', 'B.Tech Biotechnology', 'B.Sc (General) Mathematics & Data Science', 'Bachelor of Design in Advertising, Graphics & Web Design', 'BBA Banking, Financial Services and Insurance', 'B.Com (Professional) Integrated with CA', 'BBA Tourism & Travel', 'B.A Film Production & Theatre', 'B.A Strategic Communication', 'B.Tech in Computer Science and Engineering (Data Analytics)', 'B.Tech in Computer Science and Engineering (Artificial Intelligence)', 'B.Tech in Computer Science and Engineering (Business Analytics & Optimization)', 'B.Tech in Computer Science and Engineering (Data Science)', 'B.Tech in Computer Science and Engineering (Blockchain Technology)', 'B.Tech in Computer Science and Engineering (Cyber Security & Forensic)', 'B.Tech (Hons) in Civil Engineering (Smart City)', 'B.Tech in Electronics and Communication Engineering (Artificial Intelligence and Machine Learning)', 'B.Tech in Electronics and Communication Engineering (Electric Vehicle)', 'B.A (Liberal Studies)'
+                ];
+                $('#drop-select-specialization option').remove();
+                for (var i = 0; i < ISBR_RC.length; i++) {
+                    $('<option/>', {
+                        value: ISBR_RC[i],
+                        html: ISBR_RC[i]
+                    }).appendTo(
+                        '#select-specialization select'); //appends to select if parent div has id dropdown
+                }
+                break;
+            case 'PG':
+                var isbr_cfee = ['Select Course', 'Master of Pharmacy (Pharmacology)', 'Master of Pharmacy (Pharmaceutical Chemistry)', 'MCA with Industry Oriented Specialization in Web Designing and Security', 'MCA with Industry Oriented Specialization in Cloud Computing', 'MCA with Industry Oriented Specialization in Computer Network and Cyber Security', 'MCA with Industry Oriented Specialization in Data Analytics', 'M.Tech Communication Engineering (Sattelite Communication)', 'M.Tech in Mechanical Engineering (CAD/CAM and Robotics)', 'Master of Physiotherapy (Specialization in Cardiology)', 'M.Sc Biomedical Science', 'M.Tech in Data Science', 'M.Sc Healthcare and Clinical Research', 'M.Sc. Medical Lab Technology', 'Masters in Optometry', 'B.Ed. (2 year)', 'M.A Applied Psychology', 'M.A Economics', 'M.A English', 'M.A Journalism and Mass Communication', 'M.A Political Science', 'M.Com.', 'M.Ed.', 'M.Sc Biochemistry', 'M.Sc in Fashion Design', 'M.Sc. Agriculture (Agronomy)', 'M.Sc. Chemistry', 'M.Sc. Healthcare & Clinical Research', 'M.Sc. Computer Science', 'M.Sc. Forensic Sciences', 'M.Sc. Medical Biotechnology', 'M.Sc. Microbiology', 'M.Sc. Physics', 'M.Tech Automobile Engineering', 'M.Tech CAD - CAM', 'M.Tech Computer Science and Engineering (Artificial Intelligence and Machine Learning)', 'M.Tech Computer Science Engineering', 'M.Tech in Transportation Engineering', 'M.Tech Mechatronics', 'M.Tech Power System Engineering', 'Master of Law (LL.M.)', 'Master of Pharmacy (Pharmaceutics)', 'MBA Aviation Management', 'MBA Financial Management', 'MBA in Dual Specialization', 'MBA Logistics and Supply Chain Management', 'MCA', 'M.Sc Yoga Science', 'Master of Physiotherapy (Specialization in Neurology)', 'Master of Physiotherapy (Specialization in Orthopedics)', 'Master of Physiotherapy (Specialization in Sports Medicine)', 'MBA In Dual Specialization','M.Sc. Cardio Vascular Technology', 'M.Sc Food Safety and Quality Assurance', 'M.Sc Industrial Biotechnology', 'M.Sc Food Science & Dietetics','M.Sc Clinical Nutrition & Dietetics', 'MBA in FINTECH', 'MBA (Tourism and Travel Management)', 'M.Pharm (Pharmaceutical Chemistry)','M.Pharm (Pharmacology)', 'M.Sc (Ag) Entomology','M.Sc (Ag) Soil Science', 'M.Tech in Mechanical Engineering (CAD/CAM & Robotics)', 'M.Tech Communication Engineering (Satellite Communication)', 'M.A Sociology'];
+
+
+                $('#drop-select-specialization option').remove();
+                for (var i = 0; i < isbr_cfee.length; i++) {
+                    $('<option/>', {
+                        value: isbr_cfee[i],
+                        html: isbr_cfee[i]
+                    }).appendTo(
+                        '#select-specialization select'); //appends to select if parent div has id dropdown
+                }
+                break;
+            case 'Diploma':
+                var isbr_bs = ['Select Course', 'Diploma in Computer Science and Engineering (Web Development)', 'Diploma in Computer Science and Engineering (Network Essentials)', 'Diploma in Computer Science and Engineering (Web Designing)', 'Diploma in Computer Science and Engineering (Cloud Computing & IT Infrastructure)', 'Diploma in Computer Science and Engineering (Artificial Intelligence & Machine Learning)', 'Diploma in Computer Science and Engineering (Data Analytics)', 'Diploma in Electrical Engineering (Electric Vehicle)', 'Diploma in Electrical Engineering (Renewable Energy)', 'Diploma in Civil Engineering', 'Diploma in Computer Science and Engineering', 'Diploma in Electrical Engineering', 'Diploma in Mechanical Engineering', 'Diploma in Pharmacy'];
+
+
+                $('#drop-select-specialization option').remove();
+                for (var i = 0; i < isbr_bs.length; i++) {
+                    $('<option/>', {
+                        value: isbr_bs[i],
+                        html: isbr_bs[i]
+                    }).appendTo(
+                        '#select-specialization select'); //appends to select if parent div has id dropdown
+                }
+                break;
+            case 'PHD':
+                var isbr_cfee = ['Select Course', 'PhD in Automobile Engineering', 'PhD in Biochemistry', 'PhD in Biological science', 'PhD in Chemistry', 'PhD in Civil Engineering', 'PhD in Clinical Research', 'PhD in Communication Engineering', 'PhD in Computer Application', 'PhD in Computer Science and Engineering', 'PhD in Economics', 'PhD in Education', 'PhD in Electrical and Electronics Engineering', 'PhD in Electrical Engineering', 'PhD in Electronics and Communication Engineering', 'PhD in English', 'PhD in Environmental Science', 'PhD in Forensic Science', 'PhD in Healthcare and Hospital Management', 'PhD in Journalism and Mass Communication', 'PhD in Law and Legal Studies', 'PhD in Management', 'PhD in Mathematics', 'PhD in Mechanical Engineering', 'PhD in Pharmacy', 'PhD in Physics', 'PhD in Political Science', 'PhD in Psychology', 'PhD in Sociology', ];
+
+
+                $('#drop-select-specialization option').remove();
+                for (var i = 0; i < isbr_cfee.length; i++) {
+                    $('<option/>', {
+                        value: isbr_cfee[i],
+                        html: isbr_cfee[i]
+                    }).appendTo(
+                        '#select-specialization select'); //appends to select if parent div has id dropdown
+                }
+
+                break;
+
+            default:
+                $('#drop-select-specialization option').not(':eq(0)').remove();
+                break;
+
+
+        }
+
+
+    };
+}
+
+/*to show the eligiblity*/
+window.localSelectedspec = function (a) {
+    switch (a.value) {
+
+        case 'B.Com (Hons.) Financial Markets':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 Years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects Mathematics/Commerce as a subject in XII level</ul>";
+            break;
+        case 'B.Sc. (General) Mathematics and Data Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i> XIIth with PCM with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc. (General) PCM ( Physics Chemistry and Maths)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XIIth with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc. (General) ZBC (Zoology, Botany, Chemistry)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with PCB with minimum 50% marks.</ul>";
+            break;
+        case 'B.A (Hons) Applied Psychology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.A (Hons) Economics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Maths or Economics, with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.A (Hons) English':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with English with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.A (Hons) Political Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.A (Hons) Sociology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in Aggregate</ul>";
+            break;
+        case 'B.Com. (Hons)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects Mathematics/Commerce as a subject in XII level</ul>";
+            break;
+        case 'B.Com. (Hons) International Accounting and Finance':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects Mathematics/Commerce as a subject in XII level</ul>";
+            break;
+        case 'B.Des Fashion Design (In Association with T-Series)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>XII with minimum 50% Marks</ul>";
+            break;
+        case 'B.Sc (Hons) Agriculture':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc (Hons) Biochemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Chemistry and Biology from a recognized Board with a minimum of 50 % marks in aggregate.</ul>";
+            break;
+        case 'B.Sc (Hons) Biological Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10+2 in PCB from a recognized Board with a minimum of 50% marks in aggregate.</ul>";
+            break;
+        case 'B.Sc (Hons) Biomedical Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc (Hons) Chemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc (Hons) Computer Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks. (Maths or Computer Application as a subject in XII)</ul>";
+            break;
+        case 'B.Sc (Hons) Forensic Sciences':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc (Hons) Mathematics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>Class XII with mathematics as one of the subject with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'B.Sc (Hons) Microbiology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Chemistry and Biology from a recognized Board with a minimum of 50 % marks in aggregate.</ul>";
+            break;
+        case 'B.Sc (Hons) Physics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc (Hons) Zoology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Sc Cardiovascular Technology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years (3 years + 1 year internship)</li> <li>Eligibility : </i>XIIth with Physics Chemistry & Biology with 50% marks The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'B.Sc Fashion Design':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 45% Marks</ul>";
+            break;
+        case 'B.Sc Healthcare and Clinical Research':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with science from a recognized Board with a minimum of 50% marks in aggregate.</ul>";
+            break;
+        case 'B.Sc Hotel Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.Sc Medical Lab Technology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years (3 years + 1 year internship)</li> <li>Eligibility : </i>XIIth with Science (Physics, Chemistry and Biology) or XIIth with vocational subjects of Medical Lab Technology or equivalent with minimum 50% marks in best four relevant subjects. The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'B.Sc Nursing':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>XII with Physics, Chemistry, Biology and English with minimum 50% aggregate marks The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'B.Sc. Medical Biotechnology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with Science with minimum 50% marks.</ul>";
+            break;
+        case 'B.Tech in Artificial Intelligence and Data Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Civil Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit) </ul>";
+            break;
+        case 'B.Tech in Computer Science and Business Systems':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit) </ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Artificial Intelligence and Machine Learning)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Cloud Computing and Virtualization)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Cyber Security)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Internet of Things and Cyber Security Including Block Chain Technology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit) </ul>";
+            break;
+        case 'B.Tech in Electrical and Electronics Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Electrical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Electronics and Communication Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'BA Journalism and Mass Communication':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'Bachelor in Hotel Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'Bachelor of Law (LLB) (Hons.)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>Graduation with minimum 50% aggregate from a recognized university Or Graduation with minimum 45% aggregate from a recognized university with valid CLAT/LSAT — INDIATM Score/Rank/percentile</ul>";
+            break;
+        case 'Bachelor of Optometry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years (3 years + 1 year internship)</li> <li>Eligibility : </i>XIIth with PCM or PCB with 50% marks The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'Bachelor of Pharmacy':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years</li> <li>Eligibility : </i>XIIth with 60% and Physics & Chemistry as compulsory subjects with Math/Biology/ Biotechnology. The minimum age for admission shall be 17 years </ul>";
+            break;
+        case 'Bachelor of Physiotherapy':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 years + 6 months (Internship)</li> <li>Eligibility : </i>XIIth with Science (Physics, Chemistry and Biology) with minimum 50% marks in PCB. The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'BBA':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'BBA Aviation Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'BBA Business Analytics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'BBA Financial Investment Analysis':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% aggregate in Class 12th or equivalent qualification in the Arts/ Commerce / Science stream, completed from a recognized educational Board.</ul>";
+            break;
+        case 'BBA Logistics and Supply Chain Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i> 50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'BBA Marketing and Automobile Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'BCA':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'Integrated BA-LLB Honours':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>5 years</li> <li>Eligibility : </i>Require minimum 55% aggregate marks in Class XIIth</ul>";
+            break;
+        case 'Integrated BBA-LLB Honours':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>5 years</li> <li>Eligibility : </i>Require minimum 55% aggregate marks in Class XIIth</ul>";
+            break;
+        case 'Integrated BCA with MCA':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>5 years</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'Integrated MBA (BBA with MBA)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>5 years</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'M.Sc. Cardio Vascular Technology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum 50% B.Sc. Cardio Vascular Technology</ul>";
+            break;
+        case 'M.Sc. Medical Lab Technology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum 50% marks in B. Sc. Medical Lab Technology</ul>";
+            break;
+        case 'Masters in Optometry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum 50% marks in Bachelors in Optometry</ul>";
+            break;
+        case 'B.Ed. (2 year)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>50% (minimum) either in bachelor or master degree in science/social science/humanities/commerce/B.Tech. 5% relaxation in marks for SC/ST candidates</ul>";
+            break;
+        case 'M.A Applied Psychology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with Psychology as one of the subjects with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'M.A Economics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduate with Economics as one of the subjects with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'M.A English':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.A. in English with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'M.A Journalism and Mass Communication':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'M.A Political Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'M.Com.':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.Com (Hons.)/B.Com with minimum 50% marks.</ul>";
+            break;
+        case 'M.Ed.':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>50% (minimum) marks or an equivalent grade in B.Ed./B.A. B.Ed./ B.Sc. B.Ed./B.Com. B.Ed./ B.El.Ed./ D.El.Ed. with an undergraduate degree (with 50% marks in each)</ul>";
+            break;
+        case 'M.Sc Biochemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation in Botany/ Zoology/ Biochemistry/ Biotechnology/ Microbiology/ Biomedical Sciences/ Genetics/ Medicine/ Agriculture/ Life Sciences/ Chemistry/ Pharmacy from any recognized university or equivalent examination with a minimum of 50 % marks in aggregate.</ul>";
+            break;
+        case 'M.Sc in Fashion Design':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with minimum 50% Marks</ul>";
+            break;
+        case 'M.Sc. Agriculture (Agronomy)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i> Applicants should have passed B.Sc. (Hons.) Agriculture or equivalent degree with minimum 55% marks and for OBC and SC/ST/Other reserved categories 60% marks</ul>";
+            break;
+        case 'M.Sc. Chemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.Sc. (Hons) Chemistry / B.Sc. General with minimum 50% aggregate.</ul>";
+            break;
+        case 'M.Sc. Healthcare & Clinical Research':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Bachelor degree in Biological, Biomedical, Life Science, Biochemistry, Clinical research, Pharmacy, Biotechnology, Microbiology, Botany, Zoology, Nursing and related discipline with 50% marks.</ul>";
+            break;
+        case 'M.Sc. Computer Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with computer science/Mathematics or relevant with minimum 50% Marks in Aggregate.</ul>";
+            break;
+        case 'M.Sc. Forensic Sciences':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.Sc. in Forensic Science, Basic Health or Allied Science with 50% marks in aggregate</ul>";
+            break;
+        case 'M.Sc. Medical Biotechnology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation with Basic health or allied science with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc. Microbiology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Graduation in Botany/ Zoology/ Biochemistry/ Biotechnology/ Microbiology/ Biomedical Sciences/ Genetics/ Medicine/ Agriculture/ Life Sciences/ Chemistry/ Pharmacy from any recognized university or equivalent examination with a minimum of 50 % marks in aggregate.</ul>";
+            break;
+        case 'M.Sc. Physics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.Sc (Hons in Physics)/B.Sc. with Physics as one of the subjects with a minimum of 50% marks aggregate.</ul>";
+            break;
+        case 'M.Tech Automobile Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.Tech CAD - CAM':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.Tech Computer Science and Engineering (Artificial Intelligence and Machine Learning)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in Computer Science/Information Technology or MCA</ul>";
+            break;
+        case 'M.Tech Computer Science Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in Computer Science/Information Technology or MCA</ul>";
+            break;
+        case 'M.Tech in Transportation Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.Tech Mechatronics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.Tech Power System Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'Master of Law (LL.M.)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>1 years</li> <li>Eligibility : </i>50% marks in LLB or in a 5 year integrated law program from a recognized university. Qualifying All India Entrance Test conducted by Galgotias University/ CLAT/LSAT — IndiaTM</ul>";
+            break;
+        case 'Master of Pharmacy (Pharmaceutics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>B.Pharm with minimum 55% marks</ul>";
+            break;
+        case 'MBA Aviation Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum of 50% marks in Bachelor Degree or Minimum 50% marks in graduation with minimum 55%ile or 440 score in MAT or 50%ile in CAT/GMAT/CMAT/NMAT</ul>";
+            break;
+        case 'MBA Financial Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum of 50% marks in Bachelor Degree Or Minimum 50% marks in graduation with minimum 55%ile or 440 score in MAT or 50%ile in CAT/GMAT/CMAT/NMAT</ul>";
+            break;
+        case 'MBA in Dual Specialization':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum 55% aggregate marks in Graduation Applicant with a high score in CAT/MAT/GMAT/CMAT/NMAT will be given preference in Merit</ul>";
+            break;
+        case 'MBA Logistics and Supply Chain Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum of 50% marks in Bachelor Degree or Minimum 50% marks in graduation with minimum 55%ile or 440 score in MAT or 50%ile in CAT/GMAT/CMAT/NMAT</ul>";
+            break;
+        case 'MCA':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>Minimum 50% marks in BCA/Bachelor degree in Computer Science or equivalent or B.Sc./ B.Com./ B.A. with Mathematics at 10+2 Level or at Graduation Level (with additional bridge Courses as per the norms of the concerned University)</ul>";
+            break;
+        case 'Diploma in Civil Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10th with minimum 40% marks. For Lateral Entry: Passed 10+2 with any 3 of Physics/Mathematics/Chemistry/Computer Science/Electronics/Information Technology/Biology/Informatics Practices/Biotechnology/Technical Vocational subject/Agriculture/Engineering Graphics/Business Studies/Entrepreneurship. or 10th + (2 years ITI) with 40% marks in appropriate Trade</ul>";
+            break;
+        case 'Diploma in Computer Science and Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10th with minimum 40% marks. For Lateral Entry: Passed 10+2 with any 3 of Physics/Mathematics/Chemistry/Computer Science/Electronics/Information Technology/Biology/Informatics Practices/Biotechnology/Technical Vocational subject/Agriculture/Engineering Graphics/Business Studies/Entrepreneurship. or 10th + (2 years ITI) with 40% marks in appropriate Trade</ul>";
+            break;
+        case 'Diploma in Electrical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10th with minimum 40% marks. For Lateral Entry: Passed 10+2 with any 3 of Physics/Mathematics/Chemistry/Computer Science/Electronics/Information Technology/Biology/Informatics Practices/Biotechnology/Technical Vocational subject/Agriculture/Engineering Graphics/Business Studies/Entrepreneurship. or 10th + (2 years ITI) with 40% marks in appropriate Trade</ul>";
+            break;
+        case 'Diploma in Electronics and Communication Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10th with minimum 40% marks. For Lateral Entry: Passed 10+2 with any 3 of Physics/Mathematics/Chemistry/Computer Science/Electronics/Information Technology/Biology/Informatics Practices/Biotechnology/Technical Vocational subject/Agriculture/Engineering Graphics/Business Studies/Entrepreneurship. or 10th + (2 years ITI) with 40% marks in appropriate Trade</ul>";
+            break;
+        case 'Diploma in Mechanical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 years</li> <li>Eligibility : </i>10th with minimum 40% marks. For Lateral Entry: Passed 10+2 with any 3 of Physics/Mathematics/Chemistry/Computer Science/Electronics/Information Technology/Biology/Informatics Practices/Biotechnology/Technical Vocational subject/Agriculture/Engineering Graphics/Business Studies/Entrepreneurship. or 10th + (2 years ITI) with 40% marks in appropriate Trade</ul>";
+            break;
+        case 'Diploma in Pharmacy':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 years</li> <li>Eligibility : </i>XII with Science with minimum 50% Marks in aggregate. The minimum age for admission shall be 17 years</ul>";
+            break;
+        case 'PhD in Automobile Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Biochemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Biological science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Chemistry':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Civil Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Clinical Research':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Communication Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Computer Application':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Computer Science and Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Economics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Education':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Electrical and Electronics Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Electrical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Electronics and Communication Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in English':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Environmental Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Forensic Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Healthcare and Hospital Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Journalism and Mass Communication':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Law and Legal Studies':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Mathematics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Mechanical Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Pharmacy':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Physics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Political Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Psychology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'PhD in Sociology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>Cwork1+2</li> <li>Eligibility : </i>A Master's degree from a recognized Indian University or any other equivalent degree to the satisfaction of the Academic Council of the University, in the relevant field, with not less than 55% marks in aggregate or 6.0 CGPA on a 10 point scale or equivalent. Note: Candidates who have qualified in UGC NET/CSIR (JRF) Examination/SLET/GATE/Teacher Fellowship holder or have passed M.Phil. Programmes are exempted from Written Examinations. Click Here to know more</ul>";
+            break;
+        case 'B.Sc. Clinical Research':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>12th with PCB with minimum 50% marks</ul>";
+            break;
+        case 'B.Sc. (Hons) Built Environment':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% aggregate marks</ul>";
+            break;
+        case 'B.Sc. - Food Science And Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% aggregate marks</ul>";
+            break;
+        case 'Bachelor of Design (Interior Design)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% aggregate marks</ul>";
+            break;
+        case 'Bachelor of Design (Product Design)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% aggregate marks</ul>";
+            break;
+        case 'B.Sc. Yoga Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>12th with science with minimum 50% marks</ul>";
+            break;
+        case 'B.Tech In Medical Lab Technology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Agriculture Engineering':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Civil Engineering (Smart Cities)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Augmented Reality & Virtual Reality (AR & VR))':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Business Analytics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Business Analytics and Optimization)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Computer Network & Cyber Security)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Cyber Security & Forensic)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Computer Science & Engineering (Data Analytics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech Computer Science and Engineering (Artificial Intelligence)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech Computer Science and Engineering (Data Science)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech In Artificial Intelligence & Machine Learning':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Sc.- Programming & Data Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Artificial Intelligence & Machine Learning (AIML)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Big Data':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Business Analytics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Cloud Computing and Virtulization (CCV)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Computer Networks and Cyber Secutity (CNCS)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Data Analytics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Internet of Things (IoT) and Blockchain':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% in best four relevant subjects at XII level (Including English & Maths / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'B.Tech in Electrical Engineering (Electric Vehicle)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech. in Electronics and Communication Engineering(Bio-Medical Engineering)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Electronics & Communication Engineering (Artificial Intelligence & Machine Learning)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Electronics & Communication Engineering (Embedded Systems)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Electronics & Communication Engineering (Internet of Things)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Pipeline Engineering)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Energy Engineering)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Industry 4.0)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Mechatronics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Robotics & Automation)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Mechanical Engineering (Smart Manufacturing)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'B.Tech in Automobile Engineering (E-Vehicles & Autonomous Vehicles)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in PCM/PCB in XIIth OR Min. 50% marks in PCM/PCB in class XIIth with minimum 40%ile or upto 5 Lakh rank in JEE Mains</ul>";
+            break;
+        case 'BBA (Tourism and Travel)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII or equivalent with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc - Food Science And Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Graduation with Basic health or allied science with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc Yoga Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Graduation with minimum 50% aggregate marks</ul>";
+            break;
+        case 'Master of Physiotherapy (Specialization in Neurology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Bachelor of Physiotherapy with minimum 50% marks</ul>";
+            break;
+        case 'Master of Physiotherapy (Specialization in Orthopedics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Bachelor of Physiotherapy with minimum 50% marks</ul>";
+            break;
+        case 'Master of Physiotherapy (Specialization in Sports Medicine)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in Bachelor of physiotherapy</ul>";
+            break;
+        case 'MBA (Tourism and Travel Management)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Graduation with minimum 50% marks</ul>";
+            break;
+        case 'MBA In Dual Specialization':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Graduation with minimum 50% marks</ul>";
+            break;
+        case 'Master of Pharmacy (Pharmaceutical Chemistry)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'><li>Eligibility :<br> Pharm with minimum 55% mark</li></ul>";
+            break;
+        case 'Master of Pharmacy (Pharmacology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'><li>Eligibility : <br> B.Pharm with minimum 55% marks</li></ul>";
+            break;
+        case 'B.Sc Computer Science (Cyber Security)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% marks. (Maths or Computer Application as a subject in XII)</ul>";
+            break;
+        case 'B.Sc Computer Science (Data Science)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% marks. (Maths or Computer Application as a subject in XII)</ul>";
+            break;
+        case 'B.Sc Computer Science (Cloud Computing)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% marks. (Maths or Computer Application as a subject in XII)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Game Design and Development':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in best four relevant subjects at XII level (Including English & Math / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'BCA with Industry Oriented Specialization in Multimedia and Animation':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in best four relevant subjects at XII level (Including English & Math / Computer Science / Informatics Practice / Computer Applications / Multimedia & Web)</ul>";
+            break;
+        case 'B.Sc Healthcare & Hospital Management':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with science from a recognized Board with a minimum of 50% marks in aggregate.</ul>";
+            break;
+        case 'B.Sc Food Science And Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% aggregate marks</ul>";
+            break;
+        case 'B.Sc Clinical Nutrition & Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with Science with minimum 50% aggregate marks</ul>";
+            break;
+        case 'B.Tech Biotechnology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>XII with minimum 50% marks in PCM/PCB</ul>";
+            break;
+        case 'B.Sc (General) Mathematics & Data Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XIIth with PCM with minimum 50% marks.</ul>";
+            break;
+        case 'Bachelor of Design in Advertising, Graphics & Web Design':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>XII with minimum 50% aggregate marks</ul>";
+            break;
+        case 'BBA Banking, Financial Services and Insurance':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>50% or above in best four relevant subjects at XII level</ul>";
+            break;
+        case 'B.Com (Professional) Integrated with CA':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects Mathematics/Commerce as a subject in XII level</ul>";
+            break;
+        case 'BBA Tourism & Travel':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII or equivalent with minimum 50% marks</ul>";
+            break;
+        case 'B.A Film Production & Theatre':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.A Strategic Communication':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII with minimum 50% marks in best four relevant subjects</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Data Analytics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Artificial Intelligence)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Business Analytics & Optimization)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Data Science)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Full Stack Development)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Blockchain Technology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Computer Science and Engineering (Cyber Security & Forensic)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 60% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech (Hons) in Civil Engineering (Smart City)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Electronics and Communication Engineering (Artificial Intelligence and Machine Learning)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.Tech in Electronics and Communication Engineering (Electric Vehicle)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>4 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in Physics, Chemistry & Mathematics (PCM) in Class XIIth (Applicant with a high score in JEE will be given preference in Merit)</ul>";
+            break;
+        case 'B.A (Liberal Studies)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>XII or its equivalent examination with minimum 50% marks in aggregate</ul>";
+            break;
+        case 'MCA with Industry Oriented Specialization in Cloud Computing':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>2 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in B.C.A/ B.Sc. (Computer Science)/ B.Sc. (IT) / B.E. (CSE)/ B.Tech. (CSE) / B.E. (IT) / B.Tech. (IT) or equivalent Degree. OR Minimum 50% Passed any graduation degree (e.g.: B.E. / B.Tech. / B.Sc / B.Com. / B.A./ B. Voc./ etc.,) preferably with Mathematics at 10+2 level or at Graduation level Obtained at least 50% in the qualifying examination. (for students having no Mathematics background compulsory bridge course will be framed by the respective University/ Institution and additional bridge courses related to computer subjects as per the norms of the concerned University).</ul>";
+            break;
+        case 'MCA with Industry Oriented Specialization in Computer Network and Cyber Security':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in B.C.A/ B.Sc. (Computer Science)/ B.Sc. (IT) / B.E. (CSE)/ B.Tech. (CSE) / B.E. (IT) / B.Tech. (IT) or equivalent Degree. OR Minimum 50% Passed any graduation degree (e.g.: B.E. / B.Tech. / B.Sc / B.Com. / B.A./ B. Voc./ etc.,) preferably with Mathematics at 10+2 level or at Graduation level Obtained at least 50% in the qualifying examination. (for students having no Mathematics background compulsory bridge course will be framed by the respective University/ Institution and additional bridge courses related to computer subjects as per the norms of the concerned University).</ul>";
+            break;
+        case 'MCA with Industry Oriented Specialization in Data Analytics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in B.C.A/ B.Sc. (Computer Science)/ B.Sc. (IT) / B.E. (CSE)/ B.Tech. (CSE) / B.E. (IT) / B.Tech. (IT) or equivalent Degree. OR Minimum 50% Passed any graduation degree (e.g.: B.E. / B.Tech. / B.Sc / B.Com. / B.A./ B. Voc./ etc.,) preferably with Mathematics at 10+2 level or at Graduation level Obtained at least 50% in the qualifying examination. (for students having no Mathematics background compulsory bridge course will be framed by the respective University/ Institution and additional bridge courses related to computer subjects as per the norms of the concerned University).</ul>";
+            break;
+        case 'MCA with Industry Oriented Specialization in Web Designing and Security':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in B.C.A/ B.Sc. (Computer Science)/ B.Sc. (IT) / B.E. (CSE)/ B.Tech. (CSE) / B.E. (IT) / B.Tech. (IT) or equivalent Degree. OR Minimum 50% Passed any graduation degree (e.g.: B.E. / B.Tech. / B.Sc / B.Com. / B.A./ B. Voc./ etc.,) preferably with Mathematics at 10+2 level or at Graduation level Obtained at least 50% in the qualifying examination. (for students having no Mathematics background compulsory bridge course will be framed by the respective University/ Institution and additional bridge courses related to computer subjects as per the norms of the concerned University).</ul>";
+            break;
+        case 'M.Sc Food Safety and Quality Assurance':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with Basic Health or Allied Science with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc Industrial Biotechnology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with Basic Health or Allied Science with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc Food Science & Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with Basic health or allied science with minimum 50% marks</ul>";
+            break;
+        case 'M.Sc Clinical Nutrition & Dietetics':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with Basic health or allied science with minimum 50% marks</ul>";
+            break;
+        case 'MBA in FINTECH':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% aggregate marks in Graduation Applicant with a high score in CAT/MAT/GMAT/CMAT/NMAT will be given preference in Merit</ul>";
+            break;
+        case 'M.Sc Food Safety and Quality Assurance':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with Basic Health or Allied Science with minimum 50% marks</ul>";
+            break;
+        case 'Master of Physiotherapy (Specialization in Cardiology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Minimum 50% marks in Bachelor of physiotherapy</ul>";
+            break;
+        case 'M.Pharm (Pharmaceutical Chemistry)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>B.Pharm with minimum 55% marks</ul>";
+            break;
+        case 'M.Pharm (Pharmacology)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>B.Pharm with minimum 55% marks</ul>";
+            break;
+        case 'M.Sc (Ag) Entomology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Applicants should have passed B.Sc. (Hons.) Agriculture or equivalent degree with minimum 55% marks and for OBC and SC/ST/Other reserved categories 60% marks</ul>";
+            break;
+        case 'M.Sc (Ag) Soil Science':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Applicants should have passed B.Sc. (Hons.) Agriculture or equivalent degree with minimum 55% marks and for OBC and SC/ST/Other reserved categories 60% marks</ul>";
+            break;
+        case 'M.Tech in Mechanical Engineering (CAD/CAM & Robotics)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.Tech Communication Engineering (Satellite Communication)':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>B.E/B.Tech with minimum 50% marks or equivalent in CGPA in relevant discipline</ul>";
+            break;
+        case 'M.A Sociology':
+            a.parentNode.parentNode.querySelector('.courseEligbility').innerHTML = "<ul class='ul-styling-class'> <li><a href='https://www.galgotiasuniversity.edu.in/admissions/fee-structure'  target='_blank'>Click to see Fee Structure</a> </li> <li>Duration: </i>3 YEARS</li> <li>Eligibility : </i>Graduation with minimum 50% marks in aggregate</ul>";
+            break;
+
+    }
+};
